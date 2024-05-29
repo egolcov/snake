@@ -40,3 +40,4 @@
      - Приложение отображает сообщение "GAME OVER" и предлагает нажать клавишу 'R' для перезапуска игры.
 
 [functions.md](./docs/functions.md)
+[struct.md](./docs/struct.md)
