@@ -69,6 +69,22 @@ class GameEngine:
                     flag = False
             if flag: return stone
 
+    def change_snakes_direction(self, new_direct: Point):
+        # если направление хоть какоето
+        if new_direct != Point(0, 0):
+            # изменяем направление движения всех змеек
+            for snake in self.snakes:
+                in_puddle = False
+                for puddle in self.puddles:
+                    if puddle.intersection(snake.get_head()):
+                        in_puddle = True
+                        break
+
+                if in_puddle:
+                    snake.change_direction(new_direct * -1)
+                else:
+                    snake.change_direction(new_direct)
+
     def update(self):
 
         if self.game_over:
@@ -94,20 +110,7 @@ class GameEngine:
         elif pyxel.btnp(pyxel.KEY_D):
             new_direct = Point(1, 0)
 
-        # если направление хоть какоето
-        if new_direct != Point(0, 0):
-            # изменяем направление движения всех змеек
-            for snake in self.snakes:
-                in_puddle = False
-                for puddle in self.puddles:
-                    if puddle.intersection(snake.get_head()):
-                        in_puddle = True
-                        break
-
-                if in_puddle:
-                    snake.change_direction(new_direct * -1)
-                else:
-                    snake.change_direction(new_direct)
+        self.change_snakes_direction(new_direct)
 
         # перемещаем всех змеек
         for snake in self.snakes:
