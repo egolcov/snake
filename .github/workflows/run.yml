@@ -56,7 +56,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
-          -Dsonar.projectKey=my-project-key
-          -Dsonar.organization=my-org
+          -Dsonar.projectKey=egolcov_snake
+          -Dsonar.organization=egolcov
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.python.coverage.reportPaths=coverage.xml
