@@ -1,4 +1,4 @@
-name: Run Unit Tests
+name: Run Unit Tests and SonarCloud Analysis
 
 on: [push, pull_request]
 
@@ -26,18 +26,37 @@ jobs:
         coverage run -m unittest discover
         coverage xml
 
-
-    - name: Coveralls
+    - name: Upload Coverage to Coveralls
       uses: coverallsapp/github-action@v2
 
   sonarcloud:
-    name: SonarCloud
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env: 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install libsdl2-2.0-0
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env: 
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          -Dsonar.projectKey=my-project-key
+          -Dsonar.organization=my-org
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.python.coverage.reportPaths=coverage.xml
