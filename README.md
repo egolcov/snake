@@ -1,6 +1,5 @@
 [![CI/CD GitHub Actions](https://github.com/egolcov/snake/actions/workflows/run.yml/badge.svg)](https://github.com/egolcov/snake/actions/workflows/run.yml)
-[![Coverage Status](https://coveralls.io/repos/egolcov/snake/badge.svg?branch=master)](https://coveralls.io/github/egolcov/snake?branch=master)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=egolcov_snake&metric=alert_status)](https://sonarcloud.io/dashboard?id=egolcov_snake)
+[![Coverage Status](https://coveralls.io/repos/egolcov/snake/badge.svg?branch=main)](https://coveralls.io/github/egolcov/snake?branch=main)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=egolcov_snake&metric=bugs)](https://sonarcloud.io/summary/new_code?id=egolcov_snake)
 [![Code smells](https://sonarcloud.io/api/project_badges/measure?project=egolcov_snake&metric=code_smells)](https://sonarcloud.io/dashboard?id=egolcov_snake)
 
