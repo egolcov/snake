@@ -52,4 +52,4 @@
 ## Поведенческие модели
 [behavior.md](./docs/behavior.md)
 ## Перечень тесстов
-[description.md](./docs/description.md)
+[ddescriptions.md](./docs/ddescriptions.md)
